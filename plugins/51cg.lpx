@@ -1,0 +1,27 @@
+#!name=51吃瓜解锁
+#!desc=51吃瓜(51cg)：解锁金币视频、VIP视频，净化开屏与站内广告，开启后可直接在线观看。原脚本作者：彭于晏
+#!author=彭于晏
+#!homepage=https://github.com/89996462/Quantumult-X
+#!icon=
+#!tag=视频,解锁,去广告,minky
+#!date=2026-09-04
+
+# 免责声明：
+# 1. 本插件仅供学习、研究与技术交流使用，不保证其合法性、准确性、有效性或适用性，请自行判断并承担使用风险。
+# 2. 请勿将本插件用于任何商业用途、非法用途或侵犯第三方权益的行为。
+# 3. 请于下载或使用后 24 小时内从您的设备中删除；因未及时删除或继续使用所产生的一切后果由使用者自行承担。
+# 4. 本插件涉及的应用、平台或服务均与本人无关，因使用导致的一切后果本人不承担任何责任。
+# 5. 脚本来源：https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/51cg.js
+
+# 拦截广告请求（对应原脚本 [filter-local]，如不需要可整段删除）
+[Rule]
+URL-REGEX,^https?:\/\/[^\/]+\/upload_01\/ads\/,REJECT
+URL-REGEX,^https?:\/\/[^\/]*jqgjyipzs\.com\/,REJECT
+URL-REGEX,^https?:\/\/[^\/]+\/lottery\/worldcup\/,REJECT
+
+[Script]
+# 解锁金币视频 / VIP 视频并净化接口返回的广告
+http-response ^https?:\/\/bpi[45]\.[a-z0-9-]+\.[a-z]{2,}\/api\.php\/api\/ script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/51cg.js, requires-body=true, timeout=60, tag=51吃瓜解锁去广告
+
+[Mitm]
+hostname = p11.gmjiphps.cc, *.gmjiphps.cc, bpi4.azmnhrfc.com, bpi5.azmzyrwn.cc, *.azmnhrfc.com, *.azmzyrwn.cc, pic.myedua.cn, *.myedua.cn, pic.fkqwky.cn, pic.sfbjdu.cn, hlsapp.fkqwky.cn, hlsapp.sfbjdu.cn, raw.githubusercontent.com
